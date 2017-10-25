@@ -1,0 +1,11 @@
+#!/bin/bash
+
+rm -rf simple.jar classes
+
+module load hadoop/2.6.0
+
+mkdir -p classes
+javac -d classes -cp classes:`$HADOOP_HOME/bin/hadoop classpath` Simple.java
+jar cf simple.jar -C classes .
+
+echo "end"
